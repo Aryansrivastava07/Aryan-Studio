@@ -9,6 +9,12 @@ const nextConfig = {
         pathname: "/api/images/**",
       },
       {
+        protocol: "http",
+        hostname: "https://aryan-studio.vercel.app/",
+        port: "3000",
+        pathname: "/api/images/**",
+      },
+      {
         protocol: "https",
         hostname: "res.cloudinary.com",
         pathname: "/**",
