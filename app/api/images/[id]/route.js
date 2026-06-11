@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { readContent } from "../../lib/content-store";
+import { readContent } from "../../../../helpers/lib/content-store";
 
 export async function GET(request, { params }) {
   const { id } = await params;
