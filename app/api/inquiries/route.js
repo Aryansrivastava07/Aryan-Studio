@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { sendInquiryWhatsApp } from "../lib/whatsapp";
-import { sendInquiryEmails } from "../lib/mailer";
+import { sendInquiryWhatsApp } from "../../../helpers/lib/whatsapp";
+import { sendInquiryEmails } from "../../../helpers/lib/mailer";
 
 export async function POST(request) {
   try {
