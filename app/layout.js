@@ -1,5 +1,6 @@
 import "./globals.css";
 import Header from "@/components/Header";
+import { Analytics } from "@vercel/analytics/next";
 import Footer from "@/components/Footer";
 
 export const metadata = {
@@ -11,6 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body>
+        <Analytics />
         <div className="min-h-screen flex flex-col">
           <Header />
           <div className="flex-grow">{children}</div>
