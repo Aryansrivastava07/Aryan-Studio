@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import CustomSections from "@/components/CustomSections";
+import ProtectedImage from "@/components/ProtectedImage";
 import { getData } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
@@ -16,7 +16,7 @@ export default async function ServicesPage() {
     <main className="pt-24 pb-section-gap">
       <section className="relative min-h-[512px] flex items-center justify-center px-margin-mobile md:px-margin-desktop mb-section-gap">
         <div className="absolute inset-0 z-0">
-          <Image
+          <ProtectedImage
             alt="Wedding service background"
             className="object-cover opacity-40 mix-blend-multiply"
             src={data.hero.image}
@@ -43,7 +43,7 @@ export default async function ServicesPage() {
           >
             <div className="w-full md:w-1/2 image-zoom-container h-80 md:h-auto min-h-[400px]">
               <div className="relative w-full h-full">
-                <Image
+                <ProtectedImage
                   alt={service.title}
                   className="object-cover"
                   src={service.image}

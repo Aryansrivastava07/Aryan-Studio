@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import CustomSections from "@/components/CustomSections";
+import ProtectedImage from "@/components/ProtectedImage";
 import { getData } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
@@ -12,7 +12,7 @@ export default async function HomePage() {
     <main>
       <section className="relative h-screen w-full overflow-hidden bg-tertiary">
         <div className="absolute inset-0 w-full h-full hero-zoom">
-          <Image
+          <ProtectedImage
             alt="Cinematic Wedding Moment"
             className="object-cover opacity-80"
             src={data.hero.image}
@@ -54,7 +54,7 @@ export default async function HomePage() {
           <div className="order-2 md:order-1 relative">
             <div className="aspect-[3/4] overflow-hidden rounded bg-surface-container">
               <div className="relative w-full h-full">
-                <Image
+                <ProtectedImage
                   alt="Elegant Bride Portrait"
                   className="object-cover hover:scale-[1.02] transition-transform duration-700 ease-out"
                   src={data.about.image}
@@ -120,7 +120,7 @@ export default async function HomePage() {
                 href="/services"
                 className={`${item.wide ? "md:col-span-2" : ""} relative group overflow-hidden rounded bg-surface`}
               >
-                <Image
+                <ProtectedImage
                   alt={item.title}
                   className="object-cover group-hover:scale-[1.02] transition-transform duration-700 ease-out"
                   src={item.image}

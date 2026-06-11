@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
+import ProtectedImage from "./ProtectedImage";
 
 export default function PortfolioGrid({ data }) {
   const [category, setCategory] = useState("All Works");
@@ -38,7 +38,7 @@ export default function PortfolioGrid({ data }) {
             key={`${item.title}-${item.category}`}
             className="masonry-item group relative overflow-hidden bg-surface-container-lowest"
           >
-            <Image
+            <ProtectedImage
               alt={item.title}
               className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]"
               src={item.image}

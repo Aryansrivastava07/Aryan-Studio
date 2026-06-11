@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import ProtectedImage from "./ProtectedImage";
 
 export default function CustomSections({ sections = [] }) {
   if (!sections.length) {
@@ -16,7 +16,7 @@ export default function CustomSections({ sections = [] }) {
           >
             {section.image && (
               <div className="relative min-h-[340px] overflow-hidden rounded bg-surface-container">
-                <Image
+                <ProtectedImage
                   alt={section.title || "Custom section image"}
                   src={section.image}
                   fill
