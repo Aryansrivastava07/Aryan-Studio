@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f9fafb; margin: 0; padding: 0; }
+    .container { max-width: 600px; margin: 40px auto; background: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+    .header { background: #c29b62; padding: 32px; text-align: center; color: #ffffff; }
+    .header h1 { margin: 0; font-size: 28px; font-weight: 600; letter-spacing: 1px; }
+    .content { padding: 40px 32px; color: #374151; line-height: 1.6; }
+    .content p { margin-top: 0; margin-bottom: 16px; font-size: 16px; }
+    .details-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 20px; margin: 24px 0; }
+    .details-box h3 { margin-top: 0; margin-bottom: 16px; font-size: 18px; color: #111827; }
+    .details-list { list-style: none; padding: 0; margin: 0; }
+    .details-list li { margin-bottom: 8px; font-size: 15px; }
+    .details-list strong { color: #111827; }
+    .footer { background: #1a1a1a; padding: 24px; text-align: center; color: #9ca3af; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Aryan Studio</h1>
+    </div>
+    <div class="content">
+      <p>Hi <%= inquiry.name %>,</p>
+      <p>Thank you for reaching out to us regarding your <strong><%= inquiry.eventType %></strong>. We have successfully received your request, and our team will get back to you shortly to discuss your vision in detail.</p>
+      
+      <div class="details-box">
+        <h3>Your Inquiry Details</h3>
+        <ul class="details-list">
+          <li><strong>Phone:</strong> <%= inquiry.phone %></li>
+          <% if (inquiry.email) { %><li><strong>Email:</strong> <%= inquiry.email %></li><% } %>
+          <% if (inquiry.date) { %><li><strong>Date:</strong> <%= inquiry.date %></li><% } %>
+        </ul>
+        <% if (inquiry.message) { %>
+          <p style="margin-top: 16px; font-size: 14px; color: #6b7280; border-top: 1px solid #e5e7eb; padding-top: 16px;">
+            <em>"<%= inquiry.message %>"</em>
+          </p>
+        <% } %>
+      </div>
+      
+      <p>We look forward to crafting eternal memories with you.</p>
+      <p>Best regards,<br/><strong>The Aryan Studio Team</strong></p>
+    </div>
+    <div class="footer">
+      &copy; <%= new Date().getFullYear() %> Aryan Studio. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>

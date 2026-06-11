@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Vivah Cinemas - Premium Wedding Photography</title>
+    
+    <!-- React & React Router Dependencies -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/history@5/umd/history.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-router@6.3.0/umd/react-router.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-router-dom@6.3.0/umd/react-router-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "outline-variant": "#e2bfb9",
+                        "tertiary-fixed": "#e3e2e0",
+                        "surface": "#fbf9f8",
+                        "on-primary-fixed": "#410000",
+                        "on-primary-container": "#ff8371",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#feda57",
+                        "on-primary-fixed-variant": "#8f0f07",
+                        "inverse-on-surface": "#f3f0f0",
+                        "surface-bright": "#fbf9f8",
+                        "on-tertiary-fixed-variant": "#464745",
+                        "surface-container": "#f0eded",
+                        "surface-container-low": "#f6f3f2",
+                        "tertiary-fixed-dim": "#c7c6c4",
+                        "on-tertiary-container": "#a8a8a5",
+                        "secondary": "#715c00",
+                        "inverse-primary": "#ffb4a8",
+                        "on-secondary-fixed-variant": "#554500",
+                        "primary-fixed-dim": "#ffb4a8",
+                        "on-surface": "#1b1c1c",
+                        "on-secondary-fixed": "#231b00",
+                        "primary-container": "#800000",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#745f00",
+                        "surface-container-high": "#eae8e7",
+                        "inverse-surface": "#303030",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#b22b1d",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#5a413d",
+                        "surface-variant": "#e4e2e1",
+                        "secondary-fixed": "#ffe179",
+                        "tertiary-container": "#3c3d3b",
+                        "on-tertiary-fixed": "#1a1c1a",
+                        "secondary-fixed-dim": "#e6c443",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffdad4",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary": "#262726",
+                        "primary": "#570000",
+                        "background": "#fbf9f8",
+                        "on-background": "#1b1c1c",
+                        "outline": "#8e706c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "gutter": "24px",
+                        "section-gap": "80px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "stack-lg": "32px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.25", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.25", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-zoom { animation: zoom 20s infinite alternate linear; }
+        @keyframes zoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+        .hero-gradient { background: linear-gradient(180deg, rgba(251, 249, 248, 0) 0%, rgba(251, 249, 248, 0.9) 70%, rgba(251, 249, 248, 1) 100%); }
+        .service-card { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05); }
+        .image-zoom-container { overflow: hidden; }
+        .image-zoom-container img { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .service-card:hover .image-zoom-container img { transform: scale(1.05); }
+        .glass-nav { background-color: rgba(251, 249, 248, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .form-input-minimal { border: none; border-bottom: 2px solid theme('colors.tertiary'); background: transparent; padding: 12px 0; transition: border-color 0.3s ease; }
+        .form-input-minimal:focus { outline: none; border-bottom-color: theme('colors.primary'); box-shadow: none; }
+        .masonry-grid { column-count: 1; column-gap: 24px; }
+        @media (min-width: 768px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+        .masonry-item { break-inside: avoid; margin-bottom: 24px; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { createRoot } = ReactDOM;
+        const { MemoryRouter, Routes, Route, Link, useNavigate, useLocation } = ReactRouterDOM;
+
+        // --- Components ---
+
+        const Header = () => {
+            const location = useLocation();
+            const [isScrolled, setIsScrolled] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    setIsScrolled(window.scrollY > 50);
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const navLinks = [
+                { path: '/', label: 'Home' },
+                { path: '/portfolio', label: 'Portfolio' },
+                { path: '/services', label: 'Services' },
+                { path: '/contact', label: 'Contact' }
+            ];
+
+            return (
+                <header className={`fixed top-0 w-full z-50 glass-nav border-b border-outline-variant/30 transition-all duration-300 ${isScrolled ? 'shadow-sm py-2' : 'py-0'}`} id="main-header">
+                    <div className="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 max-w-container-max mx-auto">
+                        <Link to="/" className="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim tracking-tight flex items-center gap-2 hover:opacity-80 transition-opacity duration-300">
+                            <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>camera</span>
+                            VIVAH CINEMAS
+                        </Link>
+                        
+                        <nav className="hidden md:flex items-center gap-gutter">
+                            {navLinks.map((link) => (
+                                <Link 
+                                    key={link.path} 
+                                    to={link.path} 
+                                    className={`font-body-md text-label-md uppercase tracking-wider transition-colors hover:opacity-80 duration-300 ${location.pathname === link.path ? 'text-primary dark:text-primary-fixed font-bold border-b-2 border-primary pb-1' : 'text-on-surface-variant dark:text-surface-variant hover:text-primary'}`}
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </nav>
+                        
+                        <div className="hidden md:flex items-center space-x-4">
+                            <Link to="/contact" className="inline-flex items-center justify-center bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider h-12 px-6 rounded hover:bg-primary-container transition-colors duration-300 min-h-[48px]">
+                                Book Now
+                            </Link>
+                        </div>
+                        
+                        <button className="md:hidden text-primary hover:opacity-80 transition-opacity duration-300 p-2">
+                            <span className="material-symbols-outlined text-3xl">menu</span>
+                        </button>
+                    </div>
+                </header>
+            );
+        };
+
+        const Footer = () => (
+            <footer className="w-full py-section-gap bg-tertiary dark:bg-tertiary-container border-t border-outline-variant/10 text-on-tertiary font-body-md">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+                    <div className="flex flex-col gap-stack-md">
+                        <span className="font-headline-lg text-headline-lg text-secondary-fixed flex items-center gap-2">
+                            <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>camera</span>
+                            VIVAH CINEMAS
+                        </span>
+                        <p className="text-tertiary-fixed-dim max-w-xs">
+                            Elevating rural storytelling to a premium global standard. Creating eternal memories with sophistication and art.
+                        </p>
+                    </div>
+                    <div className="flex flex-col gap-stack-sm md:items-center">
+                        <nav className="flex flex-col gap-3">
+                            <Link to="/" className="text-tertiary-fixed-dim hover:text-on-tertiary hover:text-secondary-fixed transition-colors">About Us</Link>
+                            <Link to="/portfolio" className="text-tertiary-fixed-dim hover:text-on-tertiary hover:text-secondary-fixed transition-colors">Portfolio</Link>
+                            <Link to="/services" className="text-tertiary-fixed-dim hover:text-on-tertiary hover:text-secondary-fixed transition-colors">Services</Link>
+                            <Link to="/contact" className="text-tertiary-fixed-dim hover:text-on-tertiary hover:text-secondary-fixed transition-colors">Contact</Link>
+                        </nav>
+                    </div>
+                    <div className="flex flex-col gap-stack-sm md:items-end">
+                        <nav className="flex flex-col gap-3 md:text-right">
+                            <a href="#" className="text-tertiary-fixed-dim hover:text-on-tertiary hover:text-secondary-fixed transition-colors flex items-center gap-2 md:justify-end">
+                                <span className="material-symbols-outlined text-sm">photo_camera</span> Instagram
+                            </a>
+                            <a href="#" className="text-tertiary-fixed-dim hover:text-on-tertiary hover:text-secondary-fixed transition-colors flex items-center gap-2 md:justify-end">
+                                <span className="material-symbols-outlined text-sm">groups</span> Facebook
+                            </a>
+                            <a href="#" className="text-tertiary-fixed-dim hover:text-on-tertiary hover:text-secondary-fixed transition-colors flex items-center gap-2 md:justify-end">
+                                <span className="material-symbols-outlined text-sm">chat</span> WhatsApp
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+                <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mt-stack-lg pt-stack-md border-t border-tertiary-container flex flex-col md:flex-row justify-between items-center gap-stack-sm">
+                    <p className="text-tertiary-fixed-dim text-sm">
+                        © 2024 Vivah Cinemas Photography. All Rights Reserved.
+                    </p>
+                    <div className="flex gap-4">
+                        <a href="#" className="text-tertiary-fixed-dim hover:text-on-tertiary text-sm transition-colors">Privacy Policy</a>
+                        <a href="#" className="text-tertiary-fixed-dim hover:text-on-tertiary text-sm transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </footer>
+        );
+
+        // --- Screens ---
+
+        const HomePage = () => (
+            <main>
+                <section className="relative h-screen w-full overflow-hidden bg-tertiary">
+                    <div className="absolute inset-0 w-full h-full hero-zoom">
+                        <img alt="Cinematic Wedding Moment" className="w-full h-full object-cover opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdZkVAzz1CNpN1tKw_t2OUF3Tg2oxfghNeHYMOIdEaC153jiYLR2kvTg1vothxdhrZcKNRhgWwK3ZpTj4MRAN8AspLHJNV2KZv6k7Ox06wkRinmYAVLy2Zzg2bFkicD7EIBmuZO14mv8W4u8GQRPdcQ7KnwrKGYFs8YRsdatJJoPP4XrfArFqKBI5dBE1rJCcQY0VCEY1OlLCp8j_X8TBQsnty-bKQ8vNRvqDXR0Qr37E5EHnLlk2idqM6-kmyOw9QG-IUqDn3FO2Y" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-tertiary/40 via-transparent to-tertiary/80"></div>
+                    </div>
+                    <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-margin-mobile md:px-margin-desktop">
+                        <span className="font-label-md text-label-md text-secondary-fixed uppercase tracking-[0.2em] mb-stack-md">Crafting Eternal Memories</span>
+                        <h1 className="font-headline-xl text-headline-xl text-on-tertiary max-w-4xl mb-stack-lg drop-shadow-lg">
+                            Cinematic Storytelling for Your Special Day
+                        </h1>
+                        <p className="font-body-lg text-body-lg text-tertiary-fixed mb-stack-lg max-w-2xl">
+                            We specialize in capturing the soul of your celebrations, blending traditional festivities with high-end, editorial-style photography.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-stack-md">
+                            <Link to="/portfolio" className="inline-flex items-center justify-center bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider h-12 px-8 rounded hover:bg-primary-container transition-colors duration-300">
+                                View Portfolio
+                            </Link>
+                            <Link to="/contact" className="inline-flex items-center justify-center bg-transparent border-2 border-outline-variant text-on-tertiary font-label-md text-label-md uppercase tracking-wider h-12 px-8 rounded hover:bg-outline-variant/20 transition-colors duration-300">
+                                Inquire Now
+                            </Link>
+                        </div>
+                    </div>
+                </section>
+                <section className="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface">
+                    <div className="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+                        <div className="order-2 md:order-1 relative">
+                            <div className="aspect-[3/4] overflow-hidden rounded bg-surface-container">
+                                <img alt="Elegant Bride Portrait" className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALmUmkMrjgte3tUP7c-AxoeRXRNI3PchivCUwukJ5Dvx35iwcqy0dlCq9GV85IaKTeqE98BRR05kbVQvtDll369B0ezNKRfLCWs-aUXQM6DjrTlPL310z96d-Nqk4KiwcWjo1mGAWvQNRJ0c4C88EDlmOzWWUUlFzZiqU-vVFUSp8Eu_AFYRE2efxIWytGC8tvMWDODbpEWbHfmvkRIC7csrkhbMgrCEcwEidZQ0JkKe0cTcO6l2r_v82zO43QNOl3LILMv5tYXwAO" />
+                            </div>
+                            <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-secondary-container rounded p-6 hidden md:flex flex-col justify-center items-center text-center shadow-lg">
+                                <span className="font-headline-lg text-headline-lg text-on-secondary-container block mb-2">10+</span>
+                                <span className="font-label-md text-label-md text-on-secondary-container uppercase tracking-wider block">Years of<br/>Excellence</span>
+                            </div>
+                        </div>
+                        <div className="order-1 md:order-2 md:pl-gutter flex flex-col justify-center">
+                            <span className="font-label-md text-label-md text-primary uppercase tracking-widest mb-stack-md flex items-center gap-2">
+                                <span className="w-8 h-[1px] bg-primary"></span> Welcome to Vivah
+                            </span>
+                            <h2 className="font-headline-lg text-headline-lg text-on-surface mb-stack-lg">
+                                Where Tradition Meets Cinematic Prestige.
+                            </h2>
+                            <p className="font-body-md text-body-md text-on-surface-variant mb-stack-md leading-relaxed">
+                                At Vivah Cinemas, we believe every wedding is an epic narrative waiting to be told. Based in the heart of our cultural roots, we elevate rural storytelling to a premium global standard.
+                            </p>
+                            <p className="font-body-md text-body-md text-on-surface-variant mb-stack-lg leading-relaxed">
+                                Our minimalist, sophisticated approach ensures that the raw emotion, vibrant colors, and intimate details of your festivities remain the undisputed focal point of our art.
+                            </p>
+                            <Link to="/about" className="inline-flex items-center text-primary font-label-md text-label-md uppercase tracking-wider hover:text-primary-container transition-colors group">
+                                Discover Our Story 
+                                <span className="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </Link>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        );
+
+        const ServicesPage = () => (
+            <main className="pt-24 pb-section-gap">
+                <section className="relative min-h-[512px] flex items-center justify-center px-margin-mobile md:px-margin-desktop mb-section-gap">
+                    <div className="absolute inset-0 z-0">
+                        <img alt="Background" className="w-full h-full object-cover opacity-40 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUVCBwhvcoa8k6VnetVRwpYmVvVp_Rnkps2p_WJiFRrUF91a3u0fABxvM3CGf8cwDw0_gEGZ9GLPFvt-_otasbkB5hewp871TTvJQ6ey8y9j86pOEmN2pGA7WmCAp_pBXS6qgASBOv0Q9v5gVCkmjyWYzP8jlX13AFnQM0V21dCKgKhMV7Y8hIGSkDt1DXmWIvB4Tf7jMKmyfvD9cc9aQl_l9RJ7_g4bfatDAYDAbYOSeJ8Dz0RNBv66fW4JEbVFVJUSml9xNwHsyj" />
+                        <div className="absolute inset-0 hero-gradient"></div>
+                    </div>
+                    <div className="relative z-10 text-center max-w-3xl mx-auto mt-20">
+                        <h1 className="font-headline-xl text-headline-xl md:text-[56px] text-on-background mb-stack-md">Curated Experiences</h1>
+                        <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                            Elevating rural storytelling to cinematic heights. Explore our tailored packages designed to capture the essence of your most cherished moments with grace and artistry.
+                        </p>
+                    </div>
+                </section>
+                
+                <section className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+                    {[
+                        { title: "Wedding Cinematography", price: "₹1,50,000", tag: "Cinematic", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBllB2ZonpN1Q4Hb1sIOA_8fI8cLOniWFrv3Ut_HVGohkEK7BhlqQWLE5c0zdGkcw3Pvl-088Pk-5eikwfk-I4MIeQ_xcpcTwg4mpHyyQc3KnrFcVRYGriKHEdeVnGwihoUu7zCmrxorPxv47o__N2kv6dt8mI6BAu8r4HuAyu7guZUkgrB971_VclrqI-9GKfn1FYU_J1RXdf7tkc0yInhp2vyZxwhZdh4zrgzNGHZ7hPyEl-qMk5QUZBUdogDnjKi4xAUTMmwH9VQ", desc: "A feature-film approach to your wedding day.", icon1: "movie", detail1: "Full-day coverage", icon2: "cut", detail2: "Highlight reel edit", reverse: false },
+                        { title: "Traditional Photography", price: "₹80,000", tag: "Classic", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCZncvW7RHxwtt4T7rznV8eZTjU1sSOMw6uvNDDYMR__lljsLpMGJ0K3U3bMYN8KIaUqP1kU5Fp5B0sI1lgDibZooJJQkJ4jFXgQtnN4kUOkYJ1GcU89zHIM8hrFM9QF-bSTsx1vh0_KQLWGG-p2JyAGoJtcwrX2Sdg-r5gu_T_TWOpIRtD6fPN9IVUco6dMP-jTJ7Tu3_bMS9iw8VicLhrTEXWkq3Jcjb99qbJ_X_rZOJ-aqiUL4h6CjBphWu76YsZIcBfxXgmviJK", desc: "Honoring the rituals and the people who matter most.", icon1: "photo_camera", detail1: "Event documentation", icon2: "auto_stories", detail2: "Premium albums", reverse: true }
+                    ].map((svc, i) => (
+                        <div key={i} className={`service-card flex flex-col ${svc.reverse ? 'md:flex-row-reverse' : 'md:flex-row'} bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden mb-section-gap`}>
+                            <div className="w-full md:w-1/2 image-zoom-container h-80 md:h-auto min-h-[400px]">
+                                <img alt={svc.title} className="w-full h-full object-cover" src={svc.img} />
+                            </div>
+                            <div className="w-full md:w-1/2 p-margin-mobile md:p-12 flex flex-col justify-center bg-surface-container-lowest">
+                                <div className="mb-stack-sm flex items-center gap-2">
+                                    <span className="inline-block bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-md text-[12px] uppercase tracking-wider">{svc.tag}</span>
+                                </div>
+                                <h2 className="font-headline-md text-headline-md text-on-background mb-stack-md">{svc.title}</h2>
+                                <p className="font-body-md text-body-md text-on-surface-variant mb-stack-lg leading-relaxed">{svc.desc}</p>
+                                <div className="mb-stack-lg border-t border-outline-variant/30 pt-stack-md">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <span className="material-symbols-outlined text-outline" style={{ fontVariationSettings: "'FILL' 0" }}>{svc.icon1}</span>
+                                        <span className="font-body-md text-body-md text-on-surface">{svc.detail1}</span>
+                                    </div>
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <span className="material-symbols-outlined text-outline" style={{ fontVariationSettings: "'FILL' 0" }}>{svc.icon2}</span>
+                                        <span className="font-body-md text-body-md text-on-surface">{svc.detail2}</span>
+                                    </div>
+                                </div>
+                                <div className="mt-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                                    <div>
+                                        <span className="font-label-md text-label-md text-on-surface-variant uppercase block mb-1">Starting at</span>
+                                        <span className="font-headline-md text-headline-md text-primary">{svc.price}</span>
+                                    </div>
+                                    <Link to="/contact" className="w-full sm:w-auto bg-primary text-on-primary px-8 py-3 rounded-DEFAULT font-label-md text-label-md hover:bg-primary-container transition-colors min-h-[48px] text-center">Inquire Now</Link>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </section>
+                <section className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mt-section-gap text-center">
+                    <div className="bg-surface-container-low p-8 md:p-16 rounded-xl border border-outline-variant/50 max-w-4xl mx-auto">
+                        <span className="material-symbols-outlined text-4xl text-primary mb-4" style={{ fontVariationSettings: "'FILL' 0" }}>mail</span>
+                        <h3 className="font-headline-md text-headline-md text-on-background mb-stack-sm">Need a Custom Package?</h3>
+                        <p className="font-body-md text-body-md text-on-surface-variant mb-stack-lg max-w-lg mx-auto">
+                            Every family's story is unique. Let us design a bespoke service package tailored exactly to your traditions and requirements.
+                        </p>
+                        <Link to="/contact" className="bg-tertiary text-on-tertiary px-10 py-4 rounded-DEFAULT font-label-md text-label-md hover:bg-tertiary-container hover:text-on-tertiary-container transition-colors min-h-[48px] inline-flex items-center gap-2">
+                            Contact Our Studio
+                            <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 0" }}>arrow_forward</span>
+                        </Link>
+                    </div>
+                </section>
+            </main>
+        );
+
+        const ContactPage = () => (
+            <main className="flex-grow pt-[120px] pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+                <div className="mb-section-gap max-w-3xl">
+                    <h1 className="font-headline-xl text-headline-xl text-on-surface mb-stack-md hidden md:block">Let's Frame Your Story</h1>
+                    <h1 className="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-stack-md md:hidden">Let's Frame Your Story</h1>
+                    <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                        Whether it's a traditional family celebration or a grand cinematic production, we are here to capture the essence of your moments. Reach out to discuss your vision.
+                    </p>
+                </div>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+                    <div className="lg:col-span-5 space-y-gutter flex flex-col">
+                        <div className="bg-surface-container-lowest p-8 border border-outline-variant/30 shadow-[0_4px_24px_rgba(0,0,0,0.02)] relative overflow-hidden group hover:shadow-[0_8px_32px_rgba(0,0,0,0.04)] transition-all duration-300">
+                            <div className="absolute top-0 right-0 p-4 opacity-10 text-primary group-hover:scale-110 transition-transform duration-500">
+                                <span className="material-symbols-outlined text-8xl" style={{ fontVariationSettings: "'FILL' 1" }}>forum</span>
+                            </div>
+                            <h3 className="font-headline-md text-headline-md text-on-surface mb-stack-sm relative z-10">Instant Connect</h3>
+                            <p className="font-body-md text-body-md text-on-surface-variant mb-stack-lg relative z-10">
+                                The fastest way to reach us. Drop a message to discuss dates, packages, or general inquiries.
+                            </p>
+                            <a className="inline-flex items-center justify-center bg-secondary-container text-on-secondary-container px-6 py-4 w-full font-label-md text-label-md uppercase tracking-wide hover:bg-secondary-fixed-dim transition-colors min-h-[48px] relative z-10" href="#" rel="noopener noreferrer">
+                                <span className="material-symbols-outlined mr-2" style={{ fontVariationSettings: "'FILL' 0" }}>chat</span>
+                                Message on WhatsApp
+                            </a>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-gutter">
+                            <div className="bg-surface-container-lowest p-6 border border-outline-variant/30 flex flex-col justify-between">
+                                <span className="material-symbols-outlined text-primary mb-stack-md" style={{ fontVariationSettings: "'FILL' 0" }}>call</span>
+                                <div>
+                                    <h4 className="font-label-md text-label-md uppercase text-on-surface-variant mb-2">Call Studio</h4>
+                                    <p className="font-body-md text-body-md text-on-surface">+91 98765 43210</p>
+                                </div>
+                            </div>
+                            <div className="bg-surface-container-lowest p-6 border border-outline-variant/30 flex flex-col justify-between">
+                                <span className="material-symbols-outlined text-primary mb-stack-md" style={{ fontVariationSettings: "'FILL' 0" }}>location_on</span>
+                                <div>
+                                    <h4 className="font-label-md text-label-md uppercase text-on-surface-variant mb-2">Visit Us</h4>
+                                    <p className="font-body-md text-body-md text-on-surface">123 Heritage Lane</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div className="lg:col-span-7 bg-surface-container-lowest p-8 lg:p-12 border border-outline-variant/30 shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+                        <h3 className="font-headline-lg text-headline-lg text-on-surface mb-stack-lg hidden lg:block">Send an Inquiry</h3>
+                        <form className="space-y-stack-lg" onSubmit={(e) => e.preventDefault()}>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                                <div className="relative">
+                                    <label className="font-label-md text-label-md text-on-surface-variant uppercase mb-2 block">Full Name</label>
+                                    <input className="form-input-minimal w-full font-body-md text-body-md text-on-surface" placeholder="e.g. Rahul Sharma" required type="text" />
+                                </div>
+                                <div className="relative">
+                                    <label className="font-label-md text-label-md text-on-surface-variant uppercase mb-2 block">Phone Number</label>
+                                    <input className="form-input-minimal w-full font-body-md text-body-md text-on-surface" placeholder="+91" required type="tel" />
+                                </div>
+                            </div>
+                            <div>
+                                <label className="font-label-md text-label-md text-on-surface-variant uppercase mb-4 block">Event Category</label>
+                                <div className="flex flex-wrap gap-3">
+                                    {['Wedding', 'Pre-Wedding', 'Portrait Session'].map(cat => (
+                                        <label key={cat} className="cursor-pointer">
+                                            <input className="peer sr-only" name="event_type" type="radio" value={cat} defaultChecked={cat === 'Wedding'} />
+                                            <span className="inline-block px-4 py-2 border border-outline-variant/50 text-on-surface-variant font-body-md text-body-md peer-checked:bg-secondary-container peer-checked:text-on-secondary-container peer-checked:border-secondary-container transition-colors">{cat}</span>
+                                        </label>
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="relative">
+                                <label className="font-label-md text-label-md text-on-surface-variant uppercase mb-2 block">Additional Details</label>
+                                <textarea className="form-input-minimal w-full font-body-md text-body-md text-on-surface resize-none" placeholder="Tell us a bit about your event..." rows="4"></textarea>
+                            </div>
+                            <div className="pt-4">
+                                <button className="bg-primary text-on-primary px-8 py-4 font-label-md text-label-md uppercase tracking-wide hover:bg-on-primary-fixed-variant transition-colors min-h-[48px] w-full sm:w-auto inline-flex items-center justify-center" type="submit">
+                                    Submit Request
+                                    <span className="material-symbols-outlined ml-2 text-sm" style={{ fontVariationSettings: "'FILL' 0" }}>arrow_forward</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </main>
+        );
+
+        const PortfolioPage = () => {
+            const items = [
+                { title: "The Royal Mandap", cat: "Weddings", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuB5jrdG-IoBLATKo20Dlzjg-3RSxJEoj7wlzu8DZw5si3ROLWw6qodYvt91sVzSDOdj4V0lD4vb_GXw49OY4rAiXZYHacCC-8Qx9VpSuoLv5JyLvjO08z6LFRLmVHqB7cOWlTU518FgIOE9ZbnEFaIfAvCjIObWkwtk8_UfymXYMlf9jaotzwI4j-58ne6iAJ5DJS8MUBXE30a9K0G5wuiFFbnWZ6z8AxUfbpW9vi302dBaoWG9kpF9agMf-LM7X_vrcD_JTaX-NcUd" },
+                { title: "Golden Hour Serenade", cat: "Pre-Weddings", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCLTI7p0MB-MqdB7DYxZfGlcBkp0p0vOr_6qjh21ltVmZ_43MfYLHNZyHAMYfyr-UIBvVMNt4USz0I-OlyKolTVqcSo836vfZgbYVRt5gkvRvdbdT9WjfWQ-76nQA0aG62fyqLAuf-ecpOSm32HRT1ia60m883iQLohURf7x1rjvf_kWyHj129kKGTe2D5IlhuAdKUXqU7EN6IYXrc4A41QxSR8piAsxHERP8ZPRWykfYZCg7Gdjj0ymjc-cf4aRYud_cM9AUhqv1tt" },
+                { title: "Art of Mehndi", cat: "Cultural Events", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBIJBwoBJqDM2OMR6YTsPOdj3ZANwUodmPsXQwssxmB0wqbQXrlCqUXZi1IWiIXpfxf7ObJK8nO03oF-EJcdDFAzCQ6AKQQ-SqBv2m5KnNJIouCbDREhDXdjo5MIj-jAwZi88jmTmMOxe-AiRNZ8_NqP9OOolbOr_bvHdBCqqlMf1KUy7pwfyntNBj6TpPXeLMTKYk0akzORSypEl6PHPSXf5QmV0NY69NPtS02tiDmrOi9E9wCsri2g8I7WKvoaawKU4m9yyrPQTU0" },
+                { title: "The Grand Baraat", cat: "Weddings", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAhGNGKnh8wv9bN3i1DS6D02-m2KqZ2Ej2CItpWhkGyLKb_XG5dF4_ccr0OMb-vlZPFRziZs6eGx_F3PDPH-KjrtMe9A8u9dbyyVG_GtTEf4CyxTFYScpce_3Rf2jul9-ekEWyugCOZy_6kDGfhSjGpHhsdUFvaC6uwpEmue2UxElynZjUInOKOiXvcDr1VpF_ZF916gsDlNHRdJyvE63QkJkCO449dKUslKMCeP4veYPTh7xGSAsH-7Q7b8fKJDyGg2GXRKaKNlv4m" }
+            ];
+
+            return (
+                <main className="pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+                    <header className="text-center mb-section-gap">
+                        <h1 className="font-headline-xl text-headline-xl text-primary mb-stack-md">Our Portfolio</h1>
+                        <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                            A curated collection of cinematic moments, capturing the grandeur, tradition, and intimate emotions of your special days.
+                        </p>
+                    </header>
+                    
+                    <div className="flex flex-wrap justify-center gap-stack-md mb-section-gap">
+                        {['All Works', 'Weddings', 'Pre-Weddings'].map((cat, i) => (
+                            <button key={cat} className={`px-6 py-3 font-label-md text-label-md rounded-full transition-colors ${i === 0 ? 'bg-secondary-container text-on-secondary-container shadow-sm' : 'bg-surface border border-outline-variant text-on-surface-variant hover:bg-surface-container-low'}`}>
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+                    
+                    <div className="masonry-grid">
+                        {items.map((item, i) => (
+                            <div key={i} className="masonry-item group relative overflow-hidden bg-surface-container-lowest">
+                                <img alt={item.title} className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02]" src={item.img} />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                                    <span className="font-label-md text-label-md text-secondary-fixed mb-2 uppercase tracking-wider">{item.cat}</span>
+                                    <h3 className="font-headline-md text-headline-md text-white">{item.title}</h3>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </main>
+            );
+        };
+
+        // --- App ---
+
+        const App = () => {
+            return (
+                <MemoryRouter>
+                    <div className="min-h-screen flex flex-col">
+                        <Header />
+                        <div className="flex-grow">
+                            <Routes>
+                                <Route path="/" element={<HomePage />} />
+                                <Route path="/services" element={<ServicesPage />} />
+                                <Route path="/portfolio" element={<PortfolioPage />} />
+                                <Route path="/contact" element={<ContactPage />} />
+                            </Routes>
+                        </div>
+                        <Footer />
+                    </div>
+                </MemoryRouter>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
