@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import CustomSections from "@/components/CustomSections";
-import { assetUrl, getData } from "@/lib/api";
+import { getData } from "@/lib/api";
 
 export const dynamic = "force-dynamic";
 
@@ -19,7 +19,7 @@ export default async function ServicesPage() {
           <Image
             alt="Wedding service background"
             className="object-cover opacity-40 mix-blend-multiply"
-            src={assetUrl(data.hero.image)}
+            src={data.hero.image}
             fill
             sizes="100vw"
           />
@@ -46,7 +46,7 @@ export default async function ServicesPage() {
                 <Image
                   alt={service.title}
                   className="object-cover"
-                  src={assetUrl(service.image)}
+                  src={service.image}
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"
                 />

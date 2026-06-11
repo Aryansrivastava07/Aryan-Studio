@@ -34,14 +34,12 @@ const externalImages = {
     "https://lh3.googleusercontent.com/aida-public/AB6AXuANvlODShpv7FDKnBMKcTO3ptjVdjx76ASRLNB66YcvpBVkgtk7q9oYSNifa2vYt7WxiymvdwFTC5UR3bhBsUsjvXdSHPgsCTexqlC2wiABHosGvIL6I77tFZzjMSZsrHBW-Wzv-_DTHTa0pfTa1twhtBDgB3pd_hhmT1fVvzTF-VhxADUwlehL8cUuXTHlBfzBpo6ZAdU_rr6QO2p4yqUDVLZ8ED0xKn-SoqN14LIjBUSS4w-MPoGnLb1jcTiSGe6hN_2YNk6gD7Gy",
 };
 
-const imagePath = (id) => `/api/images/${id}`;
-
 const home = {
   hero: {
     kicker: "Crafting Eternal Memories",
     title: "Cinematic Storytelling for Your Special Day",
     text: "We specialize in capturing the soul of your celebrations, blending traditional festivities with high-end, editorial-style photography.",
-    image: imagePath("hero"),
+    image: externalImages.hero,
   },
   about: {
     kicker: "Welcome to Aryan Studio",
@@ -50,29 +48,29 @@ const home = {
       "At Aryan Studio Cinemas, we believe every wedding is an epic narrative waiting to be told. Based in the heart of our cultural roots, we elevate rural storytelling to a premium global standard.",
       "Our minimalist, sophisticated approach ensures that the raw emotion, vibrant colors, and intimate details of your festivities remain the undisputed focal point of our art.",
     ],
-    image: imagePath("bridePortrait"),
+    image: externalImages.bridePortrait,
   },
   expertise: [
     {
       title: "Wedding Films",
       tag: "CINEMATIC",
-      image: imagePath("homeWeddingFilm"),
+      image: externalImages.homeWeddingFilm,
       wide: true,
     },
     {
       title: "Pre-Wedding",
       tag: "LIFESTYLE",
-      image: imagePath("homePreWedding"),
+      image: externalImages.homePreWedding,
     },
     {
       title: "Details & Emotion",
       tag: "CANDID",
-      image: imagePath("homeCandid"),
+      image: externalImages.homeCandid,
     },
     {
       title: "Drone Coverage",
       tag: "AERIAL",
-      image: imagePath("homeDrone"),
+      image: externalImages.homeDrone,
       wide: true,
     },
   ],
@@ -84,32 +82,32 @@ const portfolio = {
     {
       title: "The Royal Mandap",
       category: "Weddings",
-      image: imagePath("portfolioMandap"),
+      image: externalImages.portfolioMandap,
     },
     {
       title: "Golden Hour Serenade",
       category: "Pre-Weddings",
-      image: imagePath("portfolioSerenade"),
+      image: externalImages.portfolioSerenade,
     },
     {
       title: "Art of Mehndi",
       category: "Cultural Events",
-      image: imagePath("portfolioMehndi"),
+      image: externalImages.portfolioMehndi,
     },
     {
       title: "The Grand Baraat",
       category: "Weddings",
-      image: imagePath("portfolioBaraat"),
+      image: externalImages.portfolioBaraat,
     },
     {
       title: "Heritage Elegance",
       category: "Weddings",
-      image: imagePath("portfolioHeritage"),
+      image: externalImages.portfolioHeritage,
     },
     {
       title: "Unspoken Emotions",
       category: "Weddings",
-      image: imagePath("portfolioEmotion"),
+      image: externalImages.portfolioEmotion,
     },
   ],
 };
@@ -118,13 +116,13 @@ const services = {
   hero: {
     title: "Curated Experiences",
     text: "Elevating rural storytelling to cinematic heights. Explore our tailored packages designed to capture the essence of your most cherished moments with grace and artistry.",
-    image: imagePath("serviceHero"),
+    image: externalImages.serviceHero,
   },
   packages: [
     {
       title: "Wedding Photography",
       tag: "Cinematic",
-      image: imagePath("serviceCinema"),
+      image: externalImages.serviceCinema,
       description:
         "Comprehensive full-day coverage of your wedding day. We capture every significant moment, from pre-wedding preparations to the grand celebrations, ensuring no precious memory is missed. Our professional approach combines both posed and candid shots for a complete visual narrative of your special day.",
       details: [
@@ -138,7 +136,7 @@ const services = {
     {
       title: "Pre-wedding Photography",
       tag: "Lifestyle",
-      image: imagePath("homePreWedding"),
+      image: externalImages.homePreWedding,
       description:
         "Romantic and intimate photoshoots before your wedding day. We capture the joy, chemistry, and personality of the couple in beautiful settings. Perfect for engagement announcements, wedding websites, and creating memories of this exciting chapter in your life.",
       reverse: true,
@@ -150,7 +148,7 @@ const services = {
     {
       title: "Candid Photography",
       tag: "Candid",
-      image: imagePath("homeCandid"),
+      image: externalImages.homeCandid,
       description:
         "Unposed, authentic moments that reveal genuine emotions and joy. Our candid photography captures the real essence of your celebration - the laughter, embraces, and spontaneous interactions that make your event truly memorable. Perfect for a natural and heartfelt visual story.",
       details: [
@@ -161,7 +159,7 @@ const services = {
     {
       title: "HD Videography",
       tag: "Cinematic",
-      image: imagePath("homeWeddingFilm"),
+      image: externalImages.homeWeddingFilm,
       description:
         "Professional video coverage in stunning high definition. We create beautifully edited highlight reels and extended wedding films that let you relive your celebration again and again. Perfect for sharing with family and friends who couldn't attend.",
       reverse: true,
@@ -173,7 +171,7 @@ const services = {
     {
       title: "Indoor and Outdoor Photoshoot",
       tag: "Studio & Location",
-      image: imagePath("serviceTraditional"),
+      image: externalImages.serviceTraditional,
       description:
         "Versatile photography service covering both indoor studio settings and outdoor locations. Whether you prefer controlled studio lighting or natural outdoor ambiance, we adapt to create stunning images that suit your style and vision for every moment.",
       reverse: false,
@@ -187,7 +185,7 @@ const services = {
       // price: "₹30,000",
       // priceLabel: "Add-on Package",
       tag: "Aerial",
-      image: imagePath("serviceDrone"),
+      image: externalImages.serviceDrone,
       description:
         "Add a sense of scale and grandeur to your visual story. Our aerial services capture sweeping vistas of your venue, the majestic arrival of the Baraat, and breathtaking landscapes that frame your celebration.",
       reverse: true,
@@ -200,7 +198,7 @@ const services = {
     {
       title: "LCD Display",
       tag: "Live Display",
-      image: imagePath("serviceDrone"),
+      image: externalImages.serviceDrone,
       description:
         "Real-time display of your precious moments during the event. LCD screens showcase photographs and videos live, allowing your guests to see and enjoy the captured memories as they unfold. Creates interactive entertainment and engagement throughout your celebration.",
       reverse: false,
@@ -212,7 +210,7 @@ const services = {
     {
       title: "Cinematic",
       tag: "Premium",
-      image: imagePath("homeWeddingFilm"),
+      image: externalImages.homeWeddingFilm,
       description:
         "Experience your wedding as a cinematic masterpiece. We blend cinematic storytelling techniques, premium equipment, and artistic direction to create a feature-film quality production of your special day. Combining stunning visuals with emotional narratives for an unforgettable keepsake.",
       reverse: true,
