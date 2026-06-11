@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "dev": "npm run frontend",
     "frontend": "next dev -p 3000",
-    "backend": "node backend/server.js",
     "build": "next build",
-    "start": "concurrently \"npm run backend\" \"next start -p 3000\""
+    "start": "next start -p 3000"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

@@ -5,21 +5,21 @@ const nextConfig = {
       {
         protocol: "http",
         hostname: "localhost",
-        port: "4000",
-        pathname: "/api/images/**"
+        port: "3000",
+        pathname: "/api/images/**",
       },
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
-        pathname: "/**"
+        pathname: "/**",
       },
       {
         protocol: "https",
         hostname: "lh3.googleusercontent.com",
-        pathname: "/**"
-      }
-    ]
-  }
+        pathname: "/**",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
