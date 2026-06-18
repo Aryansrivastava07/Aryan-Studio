@@ -3,10 +3,30 @@ import CustomSections from "@/components/CustomSections";
 import ProtectedImage from "@/components/ProtectedImage";
 import { getData } from "@/lib/api";
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://aryan-studio.vercel.app";
+
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Services - Aryan Studio",
+  title: "Services | Aryan Studio",
+  description:
+    "Explore Aryan Studio's premium wedding photography, candid coverage, HD videography, pre-wedding sessions, and drone services for Indian celebrations.",
+  openGraph: {
+    title: "Services | Aryan Studio",
+    description:
+      "Explore Aryan Studio's premium wedding photography, candid coverage, HD videography, pre-wedding sessions, and drone services for Indian celebrations.",
+    url: `${siteUrl}/services`,
+    images: [
+      {
+        url: "/site-icon.svg",
+        alt: "Aryan Studio services",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "/services",
+  },
 };
 
 export default async function ServicesPage() {

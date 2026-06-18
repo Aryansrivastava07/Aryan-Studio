@@ -2,10 +2,30 @@ import InquiryForm from "@/components/InquiryForm";
 import CustomSections from "@/components/CustomSections";
 import { getData } from "@/lib/api";
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://aryan-studio.vercel.app";
+
 export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Contact Us | Aryan Studio",
+  description:
+    "Contact Aryan Studio to book premium wedding photography, cinematic videography, pre-wedding shoots, candid coverage, and drone services.",
+  openGraph: {
+    title: "Contact Us | Aryan Studio",
+    description:
+      "Contact Aryan Studio to book premium wedding photography, cinematic videography, pre-wedding shoots, candid coverage, and drone services.",
+    url: `${siteUrl}/contact`,
+    images: [
+      {
+        url: "/site-icon.svg",
+        alt: "Contact Aryan Studio",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "/contact",
+  },
 };
 
 export default async function ContactPage() {

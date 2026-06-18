@@ -2,10 +2,30 @@ import PortfolioGrid from "@/components/PortfolioGrid";
 import CustomSections from "@/components/CustomSections";
 import { getData } from "@/lib/api";
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://aryan-studio.vercel.app";
+
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Portfolio - Aryan Studio",
+  title: "Portfolio | Aryan Studio",
+  description:
+    "Browse Aryan Studio's curated portfolio of Indian wedding photography, pre-wedding portraits, cultural events, and cinematic ceremony coverage.",
+  openGraph: {
+    title: "Portfolio | Aryan Studio",
+    description:
+      "Browse Aryan Studio's curated portfolio of Indian wedding photography, pre-wedding portraits, cultural events, and cinematic ceremony coverage.",
+    url: `${siteUrl}/portfolio`,
+    images: [
+      {
+        url: "/site-icon.svg",
+        alt: "Aryan Studio portfolio",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "/portfolio",
+  },
 };
 
 export default async function PortfolioPage() {

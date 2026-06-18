@@ -46,12 +46,14 @@ function hasEmailConfig() {
 }
 
 async function buildInquiryHtml(inquiry) {
-  const templatePath = path.join(__dirname, "owner.ejs");
+  // const templatePath = path.join(__dirname, "owner.ejs");
+  const templatePath = "helpers/templates/owner.ejs";
   return await ejs.renderFile(templatePath, { inquiry });
 }
 
 async function buildUserHtml(inquiry) {
-  const templatePath = path.join(__dirname, "user.ejs");
+  // const templatePath = path.join(__dirname, "user.ejs");
+  const templatePath = "helpers/templates/user.ejs";
   return await ejs.renderFile(templatePath, { inquiry });
 }
 

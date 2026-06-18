@@ -3,7 +3,32 @@ import CustomSections from "@/components/CustomSections";
 import ProtectedImage from "@/components/ProtectedImage";
 import { getData } from "@/lib/api";
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://aryan-studio.vercel.app";
+
 export const dynamic = "force-dynamic";
+
+export const metadata = {
+  title: "Home | Aryan Studio",
+  description:
+    "Aryan Studio captures cinematic Indian weddings with premium photography, videography, drone coverage and pre-wedding storytelling.",
+  openGraph: {
+    title: "Home | Aryan Studio",
+    description:
+      "Aryan Studio captures cinematic Indian weddings with premium photography, videography, drone coverage and pre-wedding storytelling.",
+    url: `${siteUrl}/`,
+    type: "website",
+    images: [
+      {
+        url: "/site-icon.svg",
+        alt: "Aryan Studio wedding photography",
+      },
+    ],
+  },
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default async function HomePage() {
   const data = await getData("/api/home");
