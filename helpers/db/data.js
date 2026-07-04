@@ -76,9 +76,24 @@ const home = {
   ],
 };
 
+const jigyanshNikitaImages = Array.from(
+  { length: 47 },
+  (_, index) => `/weddings/Jigyansh-Nikita/jigyansh_nikita (${index + 1}).jpeg`
+);
+
 const portfolio = {
   categories: ["All Works", "Weddings", "Pre-Weddings", "Cultural Events"],
   items: [
+    {
+      title: "Jigyansh Wed Nikita",
+      category: "Weddings",
+      type: "album",
+      coverImage: jigyanshNikitaImages[0],
+      imageCount: jigyanshNikitaImages.length,
+      albumImages: jigyanshNikitaImages,
+      description:
+        "An intimate collection of the wedding celebration of Jigyansh and Nikita.",
+    },
     {
       title: "The Royal Mandap",
       category: "Weddings",
